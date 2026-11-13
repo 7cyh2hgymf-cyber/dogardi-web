@@ -158,7 +158,7 @@
       html += d.tasks.length
         ? '<section class="card flush" aria-label="Today’s routine">' + d.tasks.map(taskRow).join('') + '</section>'
         : '<section class="card"><p class="muted" style="margin:0">Nothing planned for ' + esc(dog.name) + ' today.</p></section>';
-      if (d.tasks.some(function (t) { return t.canLog; })) {
+      if (d.tasks.some(function (t) { return t.canLog && !t.logged; })) {
         html += '<p class="muted small-print">Tap Log it when it’s done. ' + esc(owner.name) + ' sees it straight away.</p>';
       }
     }
