@@ -1,11 +1,21 @@
-/* Sitter link page: same look as the app (Outfit headings, Figtree text, 24/16/12 corners). */
+/* Sitter link page: same look as the app's Home (Outfit headings, Figtree text, 24/16/12 corners, plain Bone). */
 * { box-sizing: border-box; }
+
+/* Shades the app derives from Soft Terrain (src/theme/theme.ts → derived), for Today's tasks. */
+:root {
+  --frame-muted: #C5D4CB;   /* secondary text on Forest */
+  --moss-tile: #2B4039;     /* empty progress bar */
+  --clay-tint: #EFD3C8;     /* medication chip, "Didn't eat" */
+  --clay-text: #93462D;
+  --clay-on-dark: #EBA386;  /* "Overdue" on Forest */
+  --sage-tint: #D8E0D3;     /* "Ate it all" */
+  --oat-tint: #F3E6C4;      /* "Ate some" */
+}
 
 html, body { margin: 0; }
 
 body {
-  background: var(--bone) url('wallpaper.png') top center / 470px auto repeat-y;
-  background-attachment: fixed;
+  background: var(--bone);
   color: var(--ink);
   font: 400 16px/1.45 'Figtree', system-ui, sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -15,50 +25,63 @@ body {
 h1, h2 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.015em; margin: 0; }
 h1 { font-weight: 700; font-size: 28px; line-height: 34px; }
 h2 { font-weight: 600; font-size: 19px; line-height: 24px; }
+p { margin: 0; }
 
-.bar {
-  position: sticky; top: 0; z-index: 2;
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+/* --- Header band (Home's): photo, "Hi Priya!", "Ace's day", Emergency ------- */
+.band {
   background: var(--forest); color: var(--warm-white);
-  padding: calc(env(safe-area-inset-top) + 12px) 16px 12px;
-  font-weight: 700; font-size: 15px;
+  border-radius: 0 0 28px 28px;
+  padding: calc(env(safe-area-inset-top) + 16px) 20px 20px;
 }
-.bar .expires { color: var(--golden-oat); white-space: nowrap; }
+.band-row { max-width: 560px; margin: 0 auto; display: flex; align-items: center; gap: 12px; min-height: 56px; }
+.band-text { flex: 1; min-width: 0; }
+.eyebrow { color: var(--frame-muted); font-size: 16px; line-height: 23px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.band-title { font-size: 28px; line-height: 34px; overflow-wrap: anywhere; }
+.band-meta { max-width: 560px; margin: 10px auto 0; color: var(--golden-oat); font-weight: 600; font-size: 14px; line-height: 20px; }
+.avatar {
+  width: 60px; height: 60px; flex: none; border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--golden-oat); object-fit: cover;
+  background: var(--forest-light); color: var(--warm-white); display: grid; place-items: center;
+}
+.icon-btn {
+  width: 44px; height: 44px; min-height: 44px; padding: 0; flex: none; border-radius: 12px;
+  background: var(--red); border-color: var(--red); color: var(--warm-white);
+}
 
-main { max-width: 560px; margin: 0 auto; padding: 20px 16px 140px; display: grid; gap: 16px; }
+main { max-width: 560px; margin: 0 auto; padding: 20px 20px 140px; display: grid; gap: 16px; }
 
-.hello { display: flex; gap: 14px; align-items: center; }
-.paw { width: 64px; height: 64px; flex: none; border-radius: 16px; background: var(--clay); display: grid; place-items: center; }
 .muted { color: var(--stone); }
-
-.label {
-  font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--stone); margin: 8px 0 -4px;
-}
 
 .card {
   background: var(--cloud); border-radius: 24px; padding: 18px;
   box-shadow: 0 0 0 1px rgba(32, 41, 37, 0.08);
 }
 .card.warm { background: var(--sand); }
-.card.flush { padding: 0; }
 
-.row { display: flex; align-items: center; gap: 12px; padding: 14px 18px; min-height: 64px; }
-.row + .row { border-top: 1px solid var(--warm-line); }
-.row .time { width: 76px; flex: none; color: var(--stone); font-weight: 600; font-size: 14px; }
-.row { flex-wrap: wrap; }
-.row .what { flex: 1; min-width: 0; display: grid; gap: 2px; }
-.row .title { font-weight: 700; }
-.row .sub { color: var(--stone); font-size: 14px; line-height: 18px; }
-.row .ate { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 8px; padding-left: 88px; }
-.badge { display: inline-block; vertical-align: 2px; background: var(--clay); color: var(--warm-white); border-radius: 999px; padding: 1px 8px; font-size: 12px; font-weight: 700; }
-.photo { width: 64px; height: 64px; flex: none; border-radius: 16px; object-fit: cover; background: var(--sand); }
-.center { text-align: center; }
-.small-print { font-size: 14px; margin: -8px 0 0; }
-.avoid { margin: 8px 0 0; }
-.notes { margin: 8px 0 0; white-space: pre-line; }
-.sheet .note { margin: -2px 0 4px; text-align: center; font-size: 14px; }
-[hidden] { display: none !important; }
+/* --- Today's tasks (Home's card, exactly) ---------------------------------- */
+.tasks { background: var(--forest); color: var(--warm-white); border-radius: 24px; padding: 18px; }
+.tasks-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tasks-head h2 { color: var(--warm-white); }
+.tasks-head .count { font-weight: 600; font-size: 16px; line-height: 23px; white-space: nowrap; }
+.track { height: 8px; border-radius: 4px; overflow: hidden; background: var(--moss-tile); margin: 12px 0 16px; }
+.track .fill { height: 100%; width: 0; border-radius: 4px; background: var(--golden-oat); }
+
+/* Rows sit in the normal flow; the list's height is held while they move, then eases to the new size. */
+.list { position: relative; display: flex; flex-direction: column; gap: 12px; }
+.list.sizing { transition: height 0.3s cubic-bezier(0.33, 1, 0.68, 1); }
+.line {
+  position: relative; overflow: hidden; transform-origin: top center;
+  display: flex; align-items: center; gap: 12px; min-height: 64px;
+  background: var(--forest-light); border-radius: 16px; padding: 12px 12px 12px 16px;
+}
+.line .important { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--red); }
+.chip { width: 36px; height: 36px; flex: none; border-radius: 12px; display: grid; place-items: center; background: var(--sage); color: var(--forest); }
+.chip.meds { background: var(--clay-tint); color: var(--clay-text); }
+.line .what { flex: 1; min-width: 0; display: grid; }
+.line .title { font-weight: 700; font-size: 16px; line-height: 22px; }
+.line .sub, .line .time { font-size: 14px; line-height: 20px; color: var(--frame-muted); }
+.line .time.next { color: var(--golden-oat); font-weight: 600; }
+.line .time.overdue { color: var(--clay-on-dark); font-weight: 600; }
 
 button, .btn {
   font: 600 16px/20px 'Figtree', system-ui, sans-serif;
@@ -68,20 +91,50 @@ button, .btn {
   -webkit-tap-highlight-color: transparent;
 }
 button:active, .btn:active { opacity: 0.85; }
+button:disabled { cursor: default; }
+.log { flex: none; min-height: 44px; padding: 0 12px; }
+.log.highlight { background: var(--golden-oat); border-color: var(--golden-oat); color: var(--ink); }
+.log.quiet { background: transparent; border-color: var(--golden-oat); color: var(--golden-oat); }
+
+/* The burst: 10 dots from the task's centre. */
+.burst { position: absolute; left: 50%; width: 0; height: 0; pointer-events: none; z-index: 1; }
+.dot { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 5px; }
+
+.all-done { display: grid; justify-items: center; gap: 8px; padding: 12px 0; text-align: center; }
+.all-done .tick { width: 52px; height: 52px; border-radius: 26px; background: var(--golden-oat); color: var(--ink); display: grid; place-items: center; margin-bottom: 8px; }
+.all-done h3 { margin: 0; font: 600 22px/28px 'Outfit', system-ui, sans-serif; letter-spacing: -0.015em; }
+.all-done p { color: var(--frame-muted); }
+.empty-day { color: var(--frame-muted); }
+
+.note { display: flex; align-items: center; gap: 6px; margin-top: 16px; font-weight: 600; font-size: 14px; line-height: 20px; animation: fade-in 0.2s; }
+.note svg { color: var(--golden-oat); flex: none; }
+@keyframes fade-in { from { opacity: 0; } }
+
+.completed { margin-top: 8px; }
+.completed-toggle {
+  background: none; border: 0; padding: 6px 0; min-height: 32px; border-radius: 0;
+  color: var(--golden-oat); font-size: 14px; gap: 4px;
+}
+.completed-toggle svg { transition: transform 0.22s cubic-bezier(0.33, 1, 0.68, 1); }
+.completed-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.completed-list { display: grid; gap: 8px; }
+.done-row { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 4px 0; }
+.done-row .tick { width: 24px; height: 24px; flex: none; border-radius: 12px; background: var(--golden-oat); color: var(--ink); display: grid; place-items: center; }
+.done-row .title { font-weight: 700; line-height: 22px; }
+.done-row .by { color: var(--frame-muted); font-size: 14px; line-height: 20px; }
+
+/* --- The rest of the page --------------------------------------------------- */
+.center { text-align: center; }
+.small-print { font-size: 14px; margin: -6px 0 0; }
+.avoid { margin: 8px 0 0; }
+.notes { margin: 8px 0 0; white-space: pre-line; }
+.sheet .note-under { margin: -2px 0 4px; text-align: center; font-size: 14px; }
+[hidden] { display: none !important; }
+
 .primary { background: var(--forest); color: var(--warm-white); border-color: var(--forest); }
 .outline { background: var(--cloud); color: var(--ink); border-color: var(--forest); }
 .emergency { background: var(--red); color: var(--warm-white); border-color: var(--red); }
 .block { width: 100%; min-height: 52px; }
-.small { min-height: 44px; padding: 0 16px; font-size: 14px; }
-
-.done-tag {
-  display: inline-flex; flex-direction: column; align-items: flex-end; text-align: right;
-  background: var(--mist); color: var(--forest); border-radius: 12px;
-  padding: 6px 12px; font-weight: 700; font-size: 13px;
-}
-.done-tag .by { font-weight: 500; font-size: 12px; }
-
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
 
 .footer {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 2;
@@ -95,10 +148,11 @@ button:active, .btn:active { opacity: 0.85; }
   max-width: 528px; margin: 0 auto;
   background: var(--moss); color: var(--warm-white); border-radius: 16px; padding: 12px 16px;
   font-weight: 600; opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
 }
 .toast.show { opacity: 1; transform: none; }
 
-/* Emergency sheet */
+/* Sheets: Emergency mode, and "Log Breakfast" (how much they ate) */
 .sheet-bg { position: fixed; inset: 0; background: rgba(23, 60, 53, 0.45); z-index: 4; display: none; }
 .sheet {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: none;
@@ -106,8 +160,14 @@ button:active, .btn:active { opacity: 0.85; }
   max-width: 560px; margin: 0 auto; max-height: 88vh; overflow: auto;
   box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.18);
 }
-.open .sheet-bg, .open .sheet { display: block; }
+.sheet.open { display: block; }
+.sheet-bg.open { display: block; }
 .sheet .stack { display: grid; gap: 8px; margin-top: 14px; }
+.ate-choices { display: grid; gap: 12px; margin-top: 16px; }
+.ate-choice { min-height: 56px; width: 100%; }
+.ate-choice.all { background: var(--sage-tint); color: var(--forest); }
+.ate-choice.some { background: var(--oat-tint); color: var(--ink); }
+.ate-choice.none { background: var(--clay-tint); color: var(--clay-text); }
 .facts { margin: 14px 0 0; padding: 0; list-style: none; }
 .facts li { padding: 8px 0; border-top: 1px solid var(--warm-line); }
 .facts b { display: block; font-size: 13px; color: var(--stone); font-weight: 700; }
@@ -116,12 +176,10 @@ button:active, .btn:active { opacity: 0.85; }
 .expired { text-align: center; padding-top: 48px; }
 .expired .clock { width: 120px; height: 120px; border-radius: 60px; background: var(--sand); display: grid; place-items: center; margin: 0 auto 24px; }
 .expired .stack { display: grid; gap: 12px; margin-top: 24px; }
-.expired .login { margin-top: 48px; color: var(--stone); }
-.expired .login a { color: var(--forest); font-weight: 700; text-decoration: none; }
 
-@media (max-width: 380px) {
-  .row .time { width: 64px; }
-  .row .ate { padding-left: 0; }
+@media (max-width: 360px) {
+  .band, main { padding-left: 16px; padding-right: 16px; }
+  .tasks { padding: 14px; }
 }
 
-@media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .toast, .list.sizing, .completed-toggle svg { transition: none; } }
