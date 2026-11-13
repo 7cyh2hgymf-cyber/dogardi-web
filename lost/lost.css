@@ -1,0 +1,33 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bone); color: var(--ink); font: 16px/1.45 Figtree, system-ui, sans-serif; }
+.banner { background: var(--red); color: var(--warm-white); text-align: center; font: 700 26px/1 Outfit, sans-serif; letter-spacing: 6px; padding: calc(env(safe-area-inset-top) + 18px) 16px 18px; }
+main { max-width: 480px; margin: 0 auto; padding: 16px 16px 8px; display: grid; gap: 12px; }
+.photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 20px; background: var(--sand); }
+h1 { font: 700 40px/1.1 Outfit, sans-serif; text-align: center; margin: 4px 0 0; }
+.details { text-align: center; font-weight: 600; margin: 0; }
+.card { background: var(--cloud); border: 1px solid var(--warm-line); border-radius: 20px; padding: 16px; }
+.card p { margin: 0; }
+.label { font: 700 13px/1.2 Figtree, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: var(--stone); margin-bottom: 4px !important; }
+.strong { font-weight: 700; }
+.muted { color: var(--stone); }
+.small { font-size: 14px; }
+.center { text-align: center; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.tag { font: 700 13px/1 Figtree, sans-serif; padding: 6px 10px; border-radius: 99px; }
+.tag.sage { background: var(--mist); color: var(--forest); }
+.tag.oat { background: #F4E7C4; color: var(--ink); }
+.note { margin-top: 10px !important; }
+textarea { width: 100%; margin: 8px 0 12px; border: 1.5px solid var(--warm-line); border-radius: 16px; padding: 12px 14px; font: 16px/1.4 Figtree, system-ui, sans-serif; color: var(--ink); background: var(--bone); resize: vertical; }
+textarea:focus { outline: 2px solid var(--forest); outline-offset: 1px; }
+.seen { width: 100%; appearance: none; border: 0; border-radius: 16px; min-height: 60px; background: var(--forest); color: var(--warm-white); font: 700 20px/1 Outfit, sans-serif; cursor: pointer; }
+.seen[disabled] { opacity: .6; }
+.sent { background: var(--mist); border-radius: 16px; padding: 14px 16px; }
+.sent p { margin: 0; }
+.call { display: block; text-align: center; border: 2px solid var(--forest); color: var(--forest); text-decoration: none; border-radius: 16px; padding: 16px; font-weight: 700; }
+footer { padding: 16px 16px calc(env(safe-area-inset-bottom) + 16px); }
+.found { text-align: center; padding-top: 18vh; display: grid; gap: 8px; }
+.found p { margin: 0; }
+.banner.calm { background: var(--forest); }
+.problem { color: var(--red); font-weight: 600; margin: 8px 0 0; }
+#seen-help { margin: 8px 0 0; }
+[hidden] { display: none !important; }
