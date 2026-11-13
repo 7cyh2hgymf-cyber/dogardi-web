@@ -1,0 +1,15 @@
+/* dogardi-web: the small public site (home, privacy, terms). Colours: ../sitter/theme.css. */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bone); color: var(--ink); font: 400 17px/1.55 'Figtree', system-ui, sans-serif; -webkit-text-size-adjust: 100%; }
+main { max-width: 680px; margin: 0 auto; padding: 32px 16px 64px; }
+h1, h2 { font-family: 'Outfit', system-ui, sans-serif; letter-spacing: -0.015em; line-height: 1.2; }
+h1 { font-size: 32px; margin: 16px 0 8px; }
+h2 { font-size: 21px; margin: 32px 0 8px; }
+a { color: var(--forest); font-weight: 600; }
+.muted { color: var(--stone); }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--forest); font: 700 22px 'Outfit', system-ui, sans-serif; }
+.logo img { width: 36px; height: 36px; border-radius: 10px; }
+.draft { background: var(--sand); border-radius: 16px; padding: 12px 16px; margin: 16px 0; font-weight: 600; }
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--warm-line); color: var(--stone); font-size: 15px; }
+footer a { margin-right: 16px; }

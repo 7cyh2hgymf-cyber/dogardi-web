@@ -1,0 +1,22 @@
+/*
+ * Soft Terrain colours for the sitter link page. These must match
+ * src/theme/theme.ts (softTerrain) exactly; a test checks they do.
+ * Change colours in theme.ts first, then copy them here.
+ */
+:root {
+  --forest: #173C35;
+  --forest-light: #22493F;
+  --moss: #20332D;
+  --bone: #F7F3EA;
+  --cloud: #FFFCF7;
+  --sage: #8FAF9D;
+  --clay: #C9785B;
+  --golden-oat: #D9B86C;
+  --mist: #DCE8E5;
+  --sand: #F1E8D8;
+  --ink: #202925;
+  --stone: #5F6763;
+  --warm-white: #F4F1E9;
+  --warm-line: #E6E0D5;
+  --red: #9A3F33;
+}
