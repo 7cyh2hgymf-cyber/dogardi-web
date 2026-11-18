@@ -1,6 +1,6 @@
 /*
  * The sitter link page (Phase 6). The owner shares
- *   https://7cyh2hgymf-cyber.github.io/dogardi-web/s/?t=<token>
+ *   https://dogardi.com/s/?t=<token>
  * and the sitter opens it in any browser, with no app or account. Everything
  * on it comes from the `sitter` Edge Function (supabase/functions/sitter),
  * which checks the token on every visit and sends only what the owner chose:

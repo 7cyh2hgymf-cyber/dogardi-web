@@ -1,6 +1,6 @@
 /*
  * The lost dog page (Phase 7). A lost pet flyer's QR code opens
- *   https://7cyh2hgymf-cyber.github.io/dogardi-web/lost/?t=<token>
+ *   https://dogardi.com/lost/?t=<token>
  * for anyone, with no app or account. It shows what's on the flyer (from the
  * `lost` Edge Function, supabase/functions/lost) and "I saw {dog}", which
  * sends the owner's pack where the person is right now and a short note.
